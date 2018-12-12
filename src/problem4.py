@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and James Werne.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -68,11 +68,39 @@ def problem4(number_of_stairs, step_size, starting_point, window):
       :type window:            rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
+
+    point1 = starting_point
+    point1.attach_to(window)
+
+    for k in range(number_of_stairs):
+
+        startpoint = rg.Point(point1.x + k*step_size, point1.y - k*step_size)
+        point2 = rg.Point(point1.x + k*step_size, point1.y - (k + 1)*step_size)
+        point3 = rg.Point(point1.x + (k+1)*step_size, point1.y - (k + 1)*step_size)
+        line1 = rg.Line(startpoint, point2)
+        line2 = rg.Line(point2, point3)
+
+        line1.color = 'magenta'
+        line2.color = 'black'
+        line1.thickness = 3
+        line2.thickness = 3
+
+        line1.attach_to(window)
+        line2.attach_to(window)
+
+    point3.attach_to(window)
+
+    window.render()
+
+
+
+
+
 
 
 # -----------------------------------------------------------------------------
